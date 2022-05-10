@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+<h1>请上传要构建知识图谱的数据</h1>
+    <form action="/upload" enctype='multipart/form-data' method='POST'>
+        <input type="file" name="file">
+        <input type="submit" value="上传">
+    </form>
+    <form action="/build_kg" enctype='multipart/form-data' method='POST'>
+        <input type="submit" value="开始构建">
+    </form>
+</center>
+</body>
+</html>

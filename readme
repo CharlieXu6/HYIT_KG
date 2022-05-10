@@ -1,0 +1,31 @@
+Readme系统说明
+py2neo需要安装4.3.0的版本，否则会报错：ValueError: The following settings are not supported: {'username': 'neo4j'}
+
+电脑需要安装neo4j，版本要求为3.5.17。请不要使用4XX版本，会报连接不上的错
+
+my_app.py为启动系统的入口，启动my_app.py进入到主页index.html
+
+index.html在templates目录下面
+网页渲染文件css\js在static目录下
+
+（1）点击开启探索，进入主页面，点击边上上传文件可以更新新文件，
+（2）也可一开始把文件放入upload目录下，直接创建图谱。
+（3）进入search页面，在搜索框中输入要搜索的实体，可调用search.html中的search（）进行搜索
+        function search() {
+            $.getJSON('/search_name', {
+                name: $("#search").val(),
+            }, function(json) {
+                option.series[0].nodes = json.data.map(function(node, idx) {
+                    node.id = idx;
+                    return node;
+                });
+                option.series[0].links = json.links;
+                myChart.setOption(option, true);
+            });
+        }
+
+图谱生成在search.html中实现
+关于正则表达式的使用，可以参照python官方教程
+
+e.g.用户登录需使用mysql数据库，初始用户名为admin。密码为123456
+    登录后可neo4j数据库中的实体与关系进行修改

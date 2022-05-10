@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HYIT——KG</title>
+
+
+    <script type="text/javascript" src="../static/js/jquery.js"></script>
+
+    <link rel="shortcut icon" href="../static/images/tp.jpg">
+
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="../static/vendors/bundle.css" type="text/css">
+
+    <!-- Lightbox -->
+    <link rel="stylesheet" href="../static/vendors/lightbox/magnific-popup.css" type="text/css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="../static/assets/css/app.min.css" type="text/css">
+</head>
+
+<body>
+
+    <!-- begin::navigation -->
+    <div class="navigation">
+
+        <!-- begin::logo -->
+        <div id="logo">
+            <img class="logo" src="../static/images/kb.PNG" alt="logo">
+        </div>
+        <!-- end::logo -->
+
+        <!-- begin::navigation header -->
+        <header class="navigation-header">
+            <div class="avatar avatar-state-success">
+                <img src="../static/images/tp.jpg" class="rounded-circle" alt="image">
+            </div>
+            <div>
+                <h5>WELCOME</h5>
+                <p class="text-muted">Administrator</p>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="{{ url_for('login') }}" class="btn nav-link bg-info-bright" title="Login" data-toggle="tooltip">
+                            <i data-feather="user"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('index') }}" class="btn nav-link bg-danger-bright" title="Logout" data-toggle="tooltip">
+                            <i data-feather="log-out"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!-- end::navigation header -->
+
+        <!-- begin::navigation menu -->
+        <div class="navigation-menu-body">
+            <ul>
+                <li class="navigation-divider">Main</li>
+
+                <li>
+                    <a href="entitysearch">
+                        <i class="nav-link-icon" data-feather="bar-chart-2"></i>
+                        <span>修改实体</span>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="entityadd">
+                        <i class="nav-link-icon" data-feather="bar-chart-2"></i>
+                        <span>添加实体</span>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="relasearch">
+                        <i class="nav-link-icon" data-feather="bar-chart-2"></i>
+                        <span>添加关系</span>
+                    </a>
+
+                </li>
+
+                <li>
+                    <a href="relasearch2">
+                        <i class="nav-link-icon" data-feather="bar-chart-2"></i>
+                        <span>删除关系</span>
+                    </a>
+
+                </li>
+
+                    <li><a href="userIndex.html">查看用户</a></li>
+                    <li><a href="contactIndex.html">查看反馈</a></li>
+                </ul>
+            </li> -->
+            </ul>
+        </div>
+        <!-- end::navigation menu -->
+
+    </div>
+    <!-- end::navigation -->
+
+    <!-- begin::main -->
+    <div id="main">
+
+        <!-- begin::header -->
+        <div class="header">
+
+            <!-- begin::header left -->
+            <ul class="navbar-nav">
+
+                <!-- begin::navigation-toggler -->
+                <li class="nav-item navigation-toggler">
+                    <a href="#" class="nav-link">
+                        <i data-feather="menu"></i>
+                    </a>
+                </li>
+                <
+
+            </ul>
+            <!-- end::header left -->
+
+            <!-- begin::header-right -->
+            <div class="header-right">
+                <ul class="navbar-nav">
+
+                    <!-- begin::search-form -->
+                    <li class="nav-item search-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <form>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="HYIT——KG">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-default" type="button">
+                                            <i data-feather="search"></i>
+                                        </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- end::search-form -->
+
+                    <!-- begin::header minimize/maximize -->
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link" title="Fullscreen" data-toggle="fullscreen">
+                            <i class="maximize" data-feather="maximize"></i>
+                            <i class="minimize" data-feather="minimize"></i>
+                        </a>
+                    </li>
+                    <!-- end::header minimize/maximize -->
+                </ul>
+
+                <!-- begin::mobile header toggler -->
+                <ul class="navbar-nav d-flex align-items-center">
+                    <li class="nav-item header-toggler">
+                        <a href="#" class="nav-link">
+                            <i data-feather="arrow-down"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- end::mobile header toggler -->
+            </div>
+            <!-- end::header-right -->
+        </div>
+        <!-- end::header -->
+
+        <!-- begin::main-content -->
+        <main class="main-content">
+
+            <div class="container">
+                <!-- begin::page-header -->
+                <div class="page-header">
+                    <h4>实体属性详情</h4>
+                </div>
+                <!-- end::page-header -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="dataid" d="{{datas}}" style="display:none"></div>
+                        <div class="card">
+                            <div class="card-body">
+                                <form id="formid">
+                                    {% for k in datas %}
+                                    <div class="form-group">
+                                        <label for="herb_name">{{k}}</label>
+                                        <textarea class="form-control">{{ datas[k] }}</textarea>
+                                    </div>
+                                    {% endfor %}
+                                    <button id="sub1" ,type="submit" class="btn btn-primary">增加属性</button>
+                                    <button id="sub2" ,type="submit" class="btn btn-primary">删除属性</button>
+                                    <button id="sub3" ,type="submit" class="btn btn-primary">修改属性</button>
+                                    <button id="del" ,type="submit" class="btn btn-primary">删除实体</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- end::main-content -->
+
+    </div>
+    <!-- end::main -->
+    <script type="text/javascript">
+        $("#del").click(function() {
+            if (confirm("您确定删除该实体吗？")) {
+                var name1 = document.getElementById('dataid').getAttribute('d');
+                $.getJSON('/del_entity', {
+                    name: name1,
+                });
+                alert("删除成功");
+                window.location.href = "admsearch";
+                return false;
+            }
+            else{
+                location.reload();
+                return false;
+            }
+        })
+
+        $("#sub1").click(function() {
+            var name = prompt ("属性名称: ", "");
+            if (name!=null && name!=""){
+                var pro = prompt ("属性详情: ", "");
+                var data = {
+                    "name" : name,
+                    "pro" : pro
+                }
+                var dataJson = JSON.stringify(data);
+                var datas = document.getElementById('dataid').getAttribute('d');
+                $.getJSON('/add_pro', {
+                    datas: datas,
+                    dataJson: dataJson,
+                });
+                alert("修改成功");
+            }
+            location.reload();
+            return false;
+        })
+
+        $("#sub2").click(function() {
+            var name = prompt ("属性名称: ", "");
+            if (name!=null && name!=""){
+                var datas = document.getElementById('dataid').getAttribute('d');
+                $.getJSON('/del_pro', {
+                    name: name,
+                    datas:datas,
+                });
+                alert("修改成功");
+            }
+            location.reload();
+            return false;
+        })
+
+        $("#sub3").click(function() {
+			var form = document.getElementById('formid');
+            var elements2 = new Array();//存放属性值
+            var ta = form.getElementsByTagName('textarea');
+            for (var j = 0; j < ta.length; j++){
+                elements2.push(ta[j].value);
+            }
+            var pros = JSON.stringify(elements2);
+            var datas = document.getElementById('dataid').getAttribute('d');
+            $.getJSON('/mod_pro', {
+                datas: datas,
+                pros: pros,
+            });
+            alert("修改成功");
+            location.reload();
+            return false;
+        })
+
+    </script>
+
+    <!-- Plugin scripts -->
+    <script src="../static/vendors/bundle.js"></script>
+
+    <!-- lightbox -->
+    <script src="../static/vendors/lightbox/jquery.magnific-popup.min.js"></script>
+    <script src="../static/assets/js/examples/lightbox.js"></script>
+
+    <!-- App scripts -->
+    <script src="../static/assets/js/app.min.js"></script>
+</body>
+
+</html>
